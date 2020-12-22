@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ $info->title }}</title>
-</head>
-<body>
-	<div class="container" style="margin-top: 150px; text-align: center;">
+@extends('layouts.app')
+
+@section('content')
+	<div class="container" style="margin-top: 100px; text-align: center;">
 
 		<h2>See details of {{ $info->title }}</h2>
 		<br>
@@ -18,7 +15,9 @@
 		<label><b>This Post Like: </b>{{ $info->likes }}</label>
 		<br>
 		<br>
-		<a href="{{ route('index') }}">Go Back</a>
+		<label><b>Author: </b>{{ $info->author }}</label>
+		<br>
+		<br>
+		<a class="btn btn-outline-dark" href="{{ url()->previous() }}">Go Back</a>
 	</div>
-</body>
-</html>
+@endsection

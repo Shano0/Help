@@ -28,3 +28,9 @@ Route::get('/edit/{id}', 'PostController@edit')->name('edit');
 Route::post('/update/{id}', 'PostController@update')->name('update');
 
 Route::get('/delete/{id}', 'PostController@destroy')->name('delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/my_posts', 'HomeController@profile')->name('profile');

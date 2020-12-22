@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +43,8 @@ class PostController extends Controller
         Post::create([
             'title'=>$request->input('title'),
             'text'=>$request->input('text'),
-            'likes'=>$request->input('likes')
+            'likes'=>$request->input('likes'),
+            'author'=>$request->input('author')
         ]);
 
         return redirect()->route('index');
