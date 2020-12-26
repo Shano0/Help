@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -20,6 +22,40 @@ class PostController extends Controller
     {
         $info = Post::get();
         return view('index', ["posts"=>$info]);
+    }
+
+    public function change($id)
+    {
+        $is_approved = Post::where('id', $id)->firstOrFail()->is_approved;
+        $message='';
+        if ($is_approved == 1) {
+            $message=' Disaproved';
+            Post::where('id', $id)->update([
+            'is_approved'=>0
+        ]);
+
+        } else {
+            $message=' Approved';
+            Post::where('id', $id)->update([
+            'is_approved'=>1
+        ]);
+
+        }
+
+        
+        $post = Post::where('id', $id)->firstOrFail()->title;
+
+        Mail::raw('Post '.$post.$message, function($message) {
+            $user = Auth()->user()->email;
+            $message->to($user);
+        } );
+
+        return Response('Success', 200);
+
+
+
+
+        // return view('index', ['is_approved'=>$is_approved, "posts"=>$info]);
     }
 
     /**
@@ -42,8 +78,6 @@ class PostController extends Controller
     {
         Post::create([
             'title'=>$request->input('title'),
-            'text'=>$request->input('text'),
-            'likes'=>$request->input('likes'),
             'author'=>$request->input('author')
         ]);
 
@@ -58,8 +92,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $single_post = Post::where('id', $id)->firstOrFail();
-        return view('single', ["info"=>$single_post]);
+        //
     }
 
     /**
@@ -70,8 +103,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $single_post = Post::where('id', $id)->firstOrFail();
-        return view('edit', ["info"=>$single_post]);
+        //
     }
 
     /**
@@ -83,13 +115,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Post::where('id', $id)->update([
-            'title'=>$request->input('title'),
-            'text'=>$request->input('text'),
-            'likes'=>$request->input('likes'),
-        ]);
-
-        return redirect()->route('index');
+        //
     }
 
     /**

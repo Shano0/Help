@@ -15,22 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/index', 'PostController@index')->name('index');
 
 Route::get('/create', 'PostController@create')->name('create');
 
 Route::post('/store', 'PostController@store')->name('store');
 
-Route::get('/single/{id}', 'PostController@show')->name('single');
-
-Route::get('/edit/{id}', 'PostController@edit')->name('edit');
-
-Route::post('/update/{id}', 'PostController@update')->name('update');
-
 Route::get('/delete/{id}', 'PostController@destroy')->name('delete');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/my_posts', 'HomeController@profile')->name('profile');
+Route::get('/change/{id}', 'PostController@change')->name('change');
