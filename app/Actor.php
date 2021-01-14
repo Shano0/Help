@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Movie;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,4 +14,9 @@ class Actor extends Model
     	"birth_place",
     	"actor_img"
     ];
+
+    public function movie()
+    {
+        return $this->belongsToMany(Movie::class, 'actor_in_movies');
+    }
 }

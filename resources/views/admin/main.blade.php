@@ -39,6 +39,13 @@
 		<a class="btn btn-success" href="{{ route('addactortoserial') }}">Add Actor To Serial</a>
 		<br>
 		<br>
+
+		<a class="btn btn-danger" href="{{ route('deletemovie') }}">Delete Moive</a>
+		{{-- 8 --}}
+		<a class="btn btn-danger" href="{{ route('deleteserial') }}">Delete Serial</a>
+		<br>
+		<br>
+
 	</div>
 </body>
 </html>

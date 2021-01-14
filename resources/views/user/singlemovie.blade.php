@@ -210,7 +210,7 @@
 						 <iframe id="pjsfrrsplayer" scrolling="no" title="" allowfullscreen="true" allowtransparency="true" allow-scripts="true" style="position: absolute; width: 100%; height: 100%; border: 0px; pointer-events: none;" src="{{ asset('singlemovie/saved_resource.html') }}">
 						 </iframe>
 						 <pjsdiv style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; transition: transform 0.2s linear 0s; text-align: center;">
-							<video src="https://ftp1.movie.ge/movies/02_18/Back_to_the_Future_1985/Back_to_the_Future_1985.mp4" x-webkit-airplay="allow" preload="none" style="width: 100%; height: 100%; object-fit: contain; transition: filter 0.2s linear 0s; min-height: auto; max-height: none; min-width: auto; max-width: none; position: static; left: 0px; top: 0px;"></video></pjsdiv>
+							<video src="https://www.dropbox.com/s/df2d2gf1dvnr5uj/Sample_1280x720_mp4.mp4" x-webkit-airplay="allow" preload="none" style="width: 100%; height: 100%; object-fit: contain; transition: filter 0.2s linear 0s; min-height: auto; max-height: none; min-width: auto; max-width: none; position: static; left: 0px; top: 0px;"></video></pjsdiv>
 							<pjsdiv style="pointer-events: none; opacity: 0; transition: opacity 0.5s ease 0s; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; background: url(&quot;https://static.movie.ge/movies/bg/big//
 							/*x4N74cycZvKu5k3KDERJay4ajR3*/
 							.jpg&quot;) center center / cover no-repeat; visibility: hidden;"></pjsdiv>

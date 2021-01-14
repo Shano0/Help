@@ -115,6 +115,23 @@ Route::get('/admin/addactortoserial', function () {
 
 Route::post('/admin/storeactortoserial', 'ActorController@actor_to_serial')->name('storeactortoserial')->middleware('admin');
 
+// delete
+
+Route::get('/deletemovie', function(){
+
+	return view('admin.deletemovie');
+
+})->name('deletemovie')->middleware('admin');
+
+Route::get('/deleteserial', function(){
+
+	return view('admin.deleteserial');
+
+})->name('deleteserial')->middleware('admin');
+
+
+Route::post('/admin/remove/movie', 'MovieController@deletemovie')->name('dltmovie')->middleware('admin');
+Route::post('admin/remove/serial', 'SerialController@deleteserial')->name('dltserial')->middleware('admin');
 
 // Single
 

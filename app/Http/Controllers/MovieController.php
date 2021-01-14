@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use App\MovieGenre;
 use App\ActorInMovie;
 use App\Serial;
@@ -200,8 +201,23 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+
+    public function deletemovie(Request $request)
     {
-        //
+        Movie::where('title_geo', $request->input('movie'))->delete();
+
+        Mail::send('mail.mail', ["movie"=>$request->input('movie')],
+        function($message){
+            $message->to('138a2e1b85-d25214@inbox.mailtrap.io',
+        'Delete Movie')->subject('Movie deleted');
+        });
+
+
+        return "
+        <div style='text-align: center;'>
+        <h1>ფილმი წარმატებით წაიშალა</h1> <a href='/admin/main'>საწყისზე დაბრუნება</a>
+        </div>";
     }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Movie;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,4 +14,9 @@ class Coment extends Model
     	'serial_id', 
     	'comment'
     ];
+
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
+    }
 }
